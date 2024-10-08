@@ -164,9 +164,12 @@ H5P.ImageSlider = (function ($) {
 
     this.loadImageSlides();
 
-    this.$currentSlide = this.imageSlideHolders[0].addClass('h5p-image-slider-current');
-
-    this.attachControls();
+    if (this.imageSlideHolders[0]) {
+      this.$currentSlide = this.imageSlideHolders[0].addClass('h5p-image-slider-current');
+      this.attachControls();
+    } else {
+      return null;
+    }
   };
 
   /**
@@ -378,6 +381,9 @@ H5P.ImageSlider = (function ($) {
    * Updates all navigation buttons, typically toggling and positioning
    */
   C.prototype.updateNavButtons = function() {
+    if (this.imageSlideHolders.length === 0) {
+      return;
+    }
     if (this.currentSlideId >= this.imageSlides.length - 1) {
       this.$rightButton.hide();
     }
@@ -406,6 +412,9 @@ H5P.ImageSlider = (function ($) {
    * and reposition the progress bar
    */
   C.prototype.updateProgressBar = function () {
+    if (this.imageSlideHolders.length === 0) {
+      return;
+    }
     const oldProgressElement = $('.h5p-image-slider-current-progress-element', this.$container).removeClass('h5p-image-slider-current-progress-element');
     const newProgressElement = $('.h5p-image-slider-progress-element', this.$container).eq(this.currentSlideId).addClass('h5p-image-slider-current-progress-element');
     
