@@ -164,7 +164,7 @@ H5P.ImageSlider = (function ($) {
 
     this.loadImageSlides();
 
-    this.$currentSlide = this.imageSlideHolders[0].addClass('h5p-image-slider-current');
+    this.$currentSlide = this.imageSlideHolders[0]?.addClass('h5p-image-slider-current');
 
     this.attachControls();
   };
@@ -393,7 +393,7 @@ H5P.ImageSlider = (function ($) {
     var heightInPercent = 100;
     var fullScreenOn = this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen');
     if (!fullScreenOn) {
-      heightInPercent = this.$currentSlide.height() / this.$slides.height() * 100;
+     heightInPercent = this.$currentSlide?.height() / this.$slides.height() * 100;
     }
     this.$leftButton.css('height', heightInPercent + '%');
     this.$rightButton.css('height', heightInPercent + '%');
@@ -416,7 +416,7 @@ H5P.ImageSlider = (function ($) {
     oldProgressElement.children('.h5p-image-slider-progress-button').attr('aria-current', 'false');
     newProgressElement.children('.h5p-image-slider-progress-button').attr('aria-current', 'true');
 
-    var heightInPercent = this.$currentSlide.height() / this.$slides.height() * 100;
+    var heightInPercent = this.$currentSlide?.height() / this.$slides.height() * 100;
     $('.h5p-image-slider-progress', this.$container).css('top', heightInPercent + '%');
   };
 
