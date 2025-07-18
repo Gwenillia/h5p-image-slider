@@ -7,7 +7,7 @@ H5P.ImageSlider = (function ($) {
   function C(options, id) {
     this.$ = $(this);
     var self = this;
-    console.log('this is test2');
+    console.log('this is test3');
     H5P.EventDispatcher.call(this);
     // Extend defaults with provided options
     this.options = $.extend(true, {}, {
